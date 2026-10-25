@@ -1,0 +1,53 @@
+{
+  "model_version": "lgbm_q_e301ddf2",
+  "weekday_indices": {
+    "0": 0.855080280027174,
+    "1": 0.8695415490306958,
+    "2": 0.9286387969537923,
+    "3": 0.9697720356464704,
+    "4": 1.049786972552142,
+    "5": 1.1853292187626059,
+    "6": 1.1392438704162315
+  },
+  "calibration_factors": {
+    "0.5": 1.0,
+    "0.7": 1.0,
+    "0.8": 1.0,
+    "0.9": 1.0
+  },
+  "dataset_hash": "322eb4c11bfa1254ea75e366ccc60ce5bea9921e59f4386a7f5a070071df9287",
+  "seed": 42,
+  "trained_at": "2026-10-25T01:58:06.261075+00:00",
+  "feature_list": [
+    "s1",
+    "s7_norm",
+    "s14_norm",
+    "s28_norm",
+    "sd7_norm",
+    "sd28_norm",
+    "trend",
+    "wd_factor_sum",
+    "promo_last28",
+    "n_promo_win",
+    "n_fest_win",
+    "n_hol_win",
+    "days_to_fest",
+    "dow",
+    "month",
+    "store_idx",
+    "sku_idx",
+    "cat_idx",
+    "size_mult",
+    "price",
+    "shelf_life"
+  ],
+  "train_rows": 177600,
+  "val_rows": 10200,
+  "test_rows": 14700,
+  "quantiles": [
+    0.5,
+    0.7,
+    0.8,
+    0.9
+  ]
+}

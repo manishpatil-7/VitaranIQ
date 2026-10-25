@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vitaraniq"
+version = "1.0.0"
+description = "VitaranIQ — AI-Powered Distribution Intelligence Engine"
+readme = "../README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic>=2.0",
+    "sqlalchemy>=2.0",
+    "pyyaml",
+    "numpy",
+    "pandas",
+    "scipy",
+    "lightgbm",
+    "ortools",
+    "scikit-learn",
+    "pytest",
+    "httpx",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

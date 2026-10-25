@@ -1,0 +1,270 @@
+# VitaranIQ — Master System Parameters (Single Source of Truth)
+# Conforms to SRS Appendix A, B, C and AI/ML Optimization Design v1.0
+
+network:
+  warehouses:
+    - id: "W1"
+      name: "Pune Fulfillment Center"
+      lat: 18.5204
+      lon: 73.8567
+      fleet: 30
+      inbound_weight: 0.35
+    - id: "W2"
+      name: "Mumbai-Bhiwandi Hub"
+      lat: 19.0760
+      lon: 72.8777
+      fleet: 30
+      inbound_weight: 0.30
+    - id: "W3"
+      name: "Nashik Regional Depot"
+      lat: 20.0000
+      lon: 73.7900
+      fleet: 30
+      inbound_weight: 0.20
+    - id: "W4"
+      name: "Kolhapur Distribution Center"
+      lat: 16.7100
+      lon: 74.2400
+      fleet: 30
+      inbound_weight: 0.15
+
+  stores:
+    count: 25
+    base_storage_cap_ml: 18000000  # 18,000 L * size_mult
+    size_multipliers:
+      [0.5, 0.6, 0.6, 0.7, 0.8, 0.8, 0.9, 0.9, 1.0, 1.0, 1.0, 1.1, 1.1, 1.2, 1.2, 1.2, 1.3, 1.4, 1.5, 1.5, 1.6, 1.7, 1.8, 2.0, 1.0]
+    anchor_cities:
+      - { name: "Pune", lat: 18.5204, lon: 73.8567, region: "Western" }
+      - { name: "Mumbai", lat: 19.0760, lon: 72.8777, region: "Konkan" }
+      - { name: "Thane", lat: 19.2183, lon: 72.9781, region: "Konkan" }
+      - { name: "Nashik", lat: 20.0000, lon: 73.7900, region: "Northern" }
+      - { name: "Kolhapur", lat: 16.7100, lon: 74.2400, region: "Southern" }
+      - { name: "Satara", lat: 17.6805, lon: 74.0183, region: "Western" }
+      - { name: "Sangli", lat: 16.8524, lon: 74.5815, region: "Southern" }
+      - { name: "Solapur", lat: 17.6599, lon: 75.9064, region: "Central" }
+      - { name: "Ahmednagar", lat: 19.0948, lon: 74.7480, region: "Northern" }
+      - { name: "Aurangabad", lat: 19.8762, lon: 75.3433, region: "Central" }
+      - { name: "Ichalkaranji", lat: 16.6920, lon: 74.4593, region: "Southern" }
+      - { name: "Karad", lat: 17.2877, lon: 74.1831, region: "Western" }
+
+  lanes:
+    distance_multiplier: 1.3  # road km = 1.3 * haversine
+    max_eligible_km: 450.0
+    transit_1_day_km_max: 200.0
+
+  trucks:
+    capacity_ml: 4000000      # 4,000 Litres
+    fixed_cost_paise: 80000   # ₹800
+    cost_per_km_paise: 1400   # ₹14/km
+
+products:
+  - id: "MILK-1L"
+    name: "Fresh Pasteurized Milk 1L"
+    category: "Dairy"
+    unit_cost_paise: 5200
+    price_paise: 6000
+    volume_ml: 1200
+    shelf_life_days: 5
+    min_life_days: 3
+    write_off_factor: 1.0
+    stockout_mult: 4
+    base_units_per_day: 120
+    target_quantile: 0.7
+
+  - id: "CURD-400G"
+    name: "Set Curd 400g"
+    category: "Dairy"
+    unit_cost_paise: 2800
+    price_paise: 3400
+    volume_ml: 500
+    shelf_life_days: 10
+    min_life_days: 5
+    write_off_factor: 1.0
+    stockout_mult: 2
+    base_units_per_day: 75
+    target_quantile: 0.7
+
+  - id: "BREAD-400G"
+    name: "White Sliced Bread 400g"
+    category: "Bakery"
+    unit_cost_paise: 3000
+    price_paise: 4000
+    volume_ml: 2500
+    shelf_life_days: 4
+    min_life_days: 2
+    write_off_factor: 1.0
+    stockout_mult: 4
+    base_units_per_day: 90
+    target_quantile: 0.7
+
+  - id: "BISC-250"
+    name: "Marie Biscuit Pack 250g"
+    category: "Snacks"
+    unit_cost_paise: 2200
+    price_paise: 3000
+    volume_ml: 800
+    shelf_life_days: 180
+    min_life_days: 72
+    write_off_factor: 0.1
+    stockout_mult: 2
+    base_units_per_day: 105
+    target_quantile: 0.9
+
+  - id: "NOODLE-70"
+    name: "Instant Masala Noodles 70g"
+    category: "Snacks"
+    unit_cost_paise: 1100
+    price_paise: 1400
+    volume_ml: 400
+    shelf_life_days: 270
+    min_life_days: 108
+    write_off_factor: 0.1
+    stockout_mult: 2
+    base_units_per_day: 90
+    target_quantile: 0.8
+
+  - id: "RICE-5KG"
+    name: "Basmati Rice 5kg Bag"
+    category: "Staples"
+    unit_cost_paise: 31000
+    price_paise: 36000
+    volume_ml: 6500
+    shelf_life_days: 365
+    min_life_days: 120
+    write_off_factor: 0.1
+    stockout_mult: 4
+    base_units_per_day: 36
+    target_quantile: 0.8
+
+  - id: "ATTA-5KG"
+    name: "Chakki Fresh Atta 5kg"
+    category: "Staples"
+    unit_cost_paise: 24000
+    price_paise: 27500
+    volume_ml: 6500
+    shelf_life_days: 120
+    min_life_days: 48
+    write_off_factor: 0.1
+    stockout_mult: 4
+    base_units_per_day: 42
+    target_quantile: 0.8
+
+  - id: "OIL-1L"
+    name: "Refined Sunflower Oil 1L"
+    category: "Staples"
+    unit_cost_paise: 14000
+    price_paise: 16000
+    volume_ml: 1100
+    shelf_life_days: 270
+    min_life_days: 108
+    write_off_factor: 0.1
+    stockout_mult: 4
+    base_units_per_day: 60
+    target_quantile: 0.8
+
+  - id: "TEA-250G"
+    name: "Premium CTC Tea 250g"
+    category: "Beverages"
+    unit_cost_paise: 11000
+    price_paise: 13000
+    volume_ml: 900
+    shelf_life_days: 365
+    min_life_days: 120
+    write_off_factor: 0.1
+    stockout_mult: 2
+    base_units_per_day: 54
+    target_quantile: 0.8
+
+  - id: "SOAP-100G"
+    name: "Grade 1 Bath Soap 100g"
+    category: "Personal"
+    unit_cost_paise: 2800
+    price_paise: 3600
+    volume_ml: 200
+    shelf_life_days: 730
+    min_life_days: 120
+    write_off_factor: 0.1
+    stockout_mult: 1
+    base_units_per_day: 48
+    target_quantile: 0.7
+
+  - id: "JUICE-1L"
+    name: "Mixed Fruit Juice 1L"
+    category: "Beverages"
+    unit_cost_paise: 7500
+    price_paise: 9500
+    volume_ml: 1100
+    shelf_life_days: 90
+    min_life_days: 36
+    write_off_factor: 0.3
+    stockout_mult: 1
+    base_units_per_day: 42
+    target_quantile: 0.7
+
+  - id: "CHIPS-90G"
+    name: "Classic Salted Chips 90g"
+    category: "Snacks"
+    unit_cost_paise: 1600
+    price_paise: 2000
+    volume_ml: 1500
+    shelf_life_days: 120
+    min_life_days: 48
+    write_off_factor: 0.1
+    stockout_mult: 1
+    base_units_per_day: 84
+    target_quantile: 0.7
+
+demand_model:
+  phi: 0.10  # Gamma-Poisson dispersion (variance = mu + 0.10 * mu^2)
+  weekday_multipliers:
+    0: 0.90  # Mon
+    1: 0.90  # Tue
+    2: 0.95  # Wed
+    3: 1.00  # Thu
+    4: 1.10  # Fri
+    5: 1.25  # Sat
+    6: 1.20  # Sun
+  seasonality:
+    juice_amplitude: 0.25
+    general_amplitude: 0.05
+    peak_doy_offset: 15
+  festival:
+    major_skus: ["OIL-1L", "ATTA-5KG", "BISC-250", "CHIPS-90G", "TEA-250G", "JUICE-1L"]
+    major_multiplier: 1.50
+    general_multiplier: 1.20
+  promo:
+    multiplier: 1.35
+    post_promo_multiplier: 0.85
+    duration_days: 5
+    post_promo_days: 3
+    windows_per_quarter: 2
+  trend:
+    annual_growth: 0.10  # 1 + 0.10 * d / 730
+
+forecasting:
+  window_days: 9
+  quantiles: [0.5, 0.7, 0.8, 0.9]
+  service_level_floor: 0.7
+  train_origins: [29, 620]
+  val_origins: [630, 663]
+  test_origins: [673, 721]
+
+optimization:
+  solver_time_limit_s: 8.0
+  relative_gap_limit: 0.005
+  objective_scale_k: 100  # 0.01 paise precision
+  holding_cost_rate: 0.018  # 0.2% per day over 9 days
+  fefo_epsilon_tie_break: 1
+  default_workers: 4
+  deterministic_workers: 1
+
+simulation:
+  start_day: 703
+  end_day: 730
+  plan_days: [703, 710, 717, 724]
+  seeds: [11, 12, 13, 14, 15]
+  scenarios:
+    normal:
+      inbound_factor: 1.05
+    scarcity:
+      inbound_factor: 0.80

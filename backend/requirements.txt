@@ -1,0 +1,15 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+pydantic-settings==2.7.0
+sqlalchemy==2.0.36
+pyyaml==6.0.2
+numpy>=1.24.0,<2.1.0
+pandas>=2.1.0,<2.3.0
+scipy>=1.11.0,<1.15.0
+lightgbm>=4.3.0
+ortools>=9.9.3963
+scikit-learn>=1.4.0
+pytest>=8.0.0
+httpx>=0.28.0
+python-multipart>=0.0.20
